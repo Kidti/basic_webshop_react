@@ -11,18 +11,14 @@ function App() {
         setFilter(event.target.value)
   }
 
-  let dataSearch = data.filter(item => {
-    return Object.keys(item).some(key =>
-      item[key].toString().toLowerCase().includes(filter.toString().toLocaleLowerCase())
-      )
-  })
+  let dataSearch = data.filter(item => item.name.toUpperCase().includes(filter.toUpperCase()))
 
-   return (
+  return (
     <div className="App">
       <h1>Webshop</h1>
       <input type="text" placeholder="Search for products" value={filter} onChange={searchText.bind(this)}/>
       <div id="cards-container">
-        {dataSearch.map(data => <Card className="cards" key={data.id} data={data} />)}
+        {dataSearch.length !== 0 ? dataSearch.map(data => <Card data={data} key={data.id} />) : <h1 id="errorMsg">Sorry, no products found</h1>}
       </div>
     </div >
   );
