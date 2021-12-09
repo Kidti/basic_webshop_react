@@ -18,7 +18,7 @@ function App() {
       <h1>Webshop</h1>
       <input type="text" placeholder="Search for products" value={filter} onChange={searchText.bind(this)}/>
       <div id="cards-container">
-        {dataSearch.length !== 0 ? dataSearch.map(data => <Card data={data} key={data.id} />) : <h1 id="errorMsg">Sorry, no products found</h1>}
+        {dataSearch.length !== 0 ? dataSearch.map(data => <Card key={data.id} data={data} />) : <h1 id="errorMsg">Sorry, no products found</h1>}
       </div>
     </div >
   );
